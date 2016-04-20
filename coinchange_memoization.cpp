@@ -1,6 +1,7 @@
 #define f(a,i,n) for(int i=a;i<n;i++)
 #include<bits/stdc++.h>
 using namespace std;
+int coinfor[100][1000];
 int sol[100][1000][100];
 int W,N;
 int rrr(int *a, int *b,int n,int w,int t)
@@ -30,12 +31,23 @@ int rrr(int *a, int *b,int n,int w,int t)
     int d=min(c,e);
     sol[n][w][t]=d;
 
+    if (sol[n][w][t]== e) {
+          coinfor[n][w]  = a[n];
+        }
     return sol[n][w][t];
 
 }
 
-
-
+void getCoins(int * a, int n, int w) {
+   if (n == 0) return;
+   if (w == 0) return;
+   if (coinfor[n][w] != 0) {
+       cout << coinfor[n][w] << ends;
+       getCoins(a, n, w - a[n]);
+   } else {
+       getCoins(a, n-1,w);
+   }
+}
 
 
 
@@ -48,13 +60,15 @@ int main()
     cin>>W;
     memset(sol,-1,sizeof sol);
     int ret  = rrr(a,b,N,W,b[N]);
-    cout << ret << endl;
+    cout <<ret << endl;
+    getCoins(a, N, W);
+
+
 //    f(0,i,N+1)
 //    {
 //        f(0,j,W+1)cout<<sol[i][j]<<ends;
 //        cout<<endl;
 //    }
-    //cout<<sol[N][W];
 
 }
 
@@ -76,7 +90,13 @@ int main()
 9
 
 
-
+5
+5 25
+10 5
+20 10
+50 2
+100 3
+140
 
 
 

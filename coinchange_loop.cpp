@@ -45,7 +45,7 @@ int main()
         memset(sol,-1,sizeof sol);
         memset(coin,0,sizeof coin);
         int ans=rrr(a,b,n,k);
-        cout<<"Mnimum number of coins: "<<ans<<endl<<"Coins are: ";
+        cout<<"Mnimum number of coins: "<<ans<<endl<<"Required Coins: ";
         getCoins (a,n,k);
 
 
